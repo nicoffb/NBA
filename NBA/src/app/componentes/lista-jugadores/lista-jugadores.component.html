@@ -1,21 +1,53 @@
-
-
-<h1>Lista de jugadores de la NBA</h1>
-
-<div class="text-center">
-    <mat-select class="w-25" [(ngModel)]="year" (selectionChange)="getTodosLosJugadores(this.year)">
-        <mat-option [value]="2021">2021</mat-option>
-        <mat-option [value]="2022">2022</mat-option>
-    </mat-select>
+<div class="text-center pt-5">
+    <img src="https://assets.stickpng.com/images/58428defa6515b1e0ad75ab4.png" alt="Logo nba" class="w-25 mb-5">
 </div>
 
-<div class="contenedor">
-  <mat-card class="example-card" *ngFor="let jugador of listaJugadores">
-    <mat-card-header>
-      <mat-card-title>{{jugador.firstName}}</mat-card-title>
-      <mat-card-subtitle>{{jugador.personId}}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image [src]= getImagenJugador(jugador.personId)
-    onerror="this.src='https://img.olympicchannel.com/images/image/private/f_auto/t_1-1_300/primary/ovfsumgucccbmte6jtor'">
-  </mat-card>
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb fst-italic fs-4">
+            <li class="breadcrumb-item fw-bold text-uppercase"><a routerLink="/menu" class="text-decoration-none">M e n
+                    u</a></li>
+            <li class="breadcrumb-item active text-warning" aria-current="page">Jugadores</li>
+        </ol>
+    </nav>
+
+    <div class="text-center">
+        <mat-select class="w-25" [(ngModel)]="year" (selectionChange)="getTodosLosJugadores(this.year)">
+            <mat-option [value]="2021">2021</mat-option>
+            <mat-option [value]="2022">2022</mat-option>
+        </mat-select>
+    </div>
+
+    
+    <div fxLayout="row wrap"  fxLayoutAlign="center center" fxLayoutGap > 
+        <mat-card class="example-card bg-white" *ngFor="let jugador of listaJugadores">
+            <!-- <mat-card-header>
+                <mat-card-subtitle class="text-center fw-bold text-dark">{{jugador.country}}</mat-card-subtitle>
+            </mat-card-header> -->
+            <img mat-card-image [src]="getImagenJugador(jugador.personId)" 
+                alt="foto jugador"
+                onerror="this.src='https://img.olympicchannel.com/images/image/private/f_auto/t_1-1_300/primary/ovfsumgucccbmte6jtor'">
+            <mat-card-content>
+                <p class="text-center fw-bold text-dark" [ngStyle]="{'font-family': 'Roboto'}">
+                    {{jugador.firstName}} {{jugador.lastName}}
+                </p>
+            </mat-card-content>
+        </mat-card>  
+    </div>
 </div>
+
+
+
+
+
+<!-- <div class="row justify-content-center"> -->
+
+
+<!--<mat-card-actions>
+          <div class="text-center d-grid">
+            <button (click)="showCharacterInfo(character)" mat-button class="btn btn-primary" [ngStyle]="{'font-family': 'Roboto'}"> + INFO</button>
+          </div>
+        </mat-card-actions>-->
+<!--  </mat-card>
+    </div>
+  </div> --> -->
