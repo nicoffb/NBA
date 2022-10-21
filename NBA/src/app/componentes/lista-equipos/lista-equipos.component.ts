@@ -11,6 +11,7 @@ const URL_IMAGEN = "https://cdn.nba.com/logos/nba"
 export class ListaEquiposComponent implements OnInit {
 
   teamList: Team[]=[];
+  yearList: String[]=["2016","2017","2018","2019", "2020", "2021", "2022"];
   year: string = "";
   pages: number = 0;
 

@@ -1,37 +1,56 @@
 <div class="text-center pt-5">
-  <img src="https://assets.stickpng.com/images/58428defa6515b1e0ad75ab4.png" alt="Logo nba" class="w-25 mb-5">
+  <img
+    src="https://assets.stickpng.com/images/58428defa6515b1e0ad75ab4.png"
+    alt="Logo nba"
+    class="w-25 mb-5"
+  />
 </div>
 
 <div class="container">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb fst-italic fs-4">
-      <li class="breadcrumb-item fw-bold text-uppercase"><a routerLink="/menu" class="text-decoration-none">M e n u</a></li>
-      <li class="breadcrumb-item active text-warning" aria-current="page">T e a m s</li>
+      <li class="breadcrumb-item fw-bold text-uppercase">
+        <a routerLink="/menu" class="text-decoration-none">M e n u</a>
+      </li>
+      <li class="breadcrumb-item active text-warning" aria-current="page">
+        T e a m s
+      </li>
     </ol>
   </nav>
-  <div class="row justify-content-center">
-    <mat-card
-      class="example-card col-2 m-3 bg-white"
-      *ngFor="let team of teamList"
-    >
-      <img
-        mat-card-image
-        [src]="getPhotoUrl(team)" [ngStyle]="{height: 250 + 'px'}"
-        onerror="this.onerror = null; this.src = 'https://starwars-visualguide.com/assets/img/placeholder.jpg'"
-        alt="Foto personaje"
-      />
-      <mat-card-content>
-        <p class="text-center fw-bold text-dark" [ngStyle]="{'font-family': 'Roboto'}">
-          {{team.nickname}}
-        </p>
-      </mat-card-content>
-      <!--<mat-card-actions>
-        <div class="text-center d-grid">
-          <button (click)="showCharacterInfo(character)" mat-button class="btn btn-primary" [ngStyle]="{'font-family': 'Roboto'}"> + INFO</button>
-        </div>
-      </mat-card-actions>-->
-    </mat-card>
+  <div class="text-center my-5">
+    <mat-select
+      class="w-25 bg-success"
+      [(ngModel)]="year"
+      (selectionChange)="getAllTeams(this.year)"
+      >
+      <mat-option value="" disabled selected class="text-dark">Select year</mat-option>
+      <mat-option *ngFor="let year of yearList" [value]="year">{{year}}</mat-option>
+    </mat-select>
+  </div>
+  <div fxLayout="row wrap" fxLayoutAlign=" space-around center center" fxLayoutGap="30px grid">
+    <div fxFlex="20%" fxFlex.sm="33%" fxFlex.xs="100%" *ngFor="let team of teamList" >
+      <mat-card class="example-card bg-white">
+        <img
+          mat-card-image
+          [src]="getPhotoUrl(team)"
+          [ngStyle]="{ height: 250 + 'px' }"
+          onerror="this.onerror = null; this.src = 'http://as01.epimg.net/img/comunes/fotos/fichas/equipos/large/171.png'"
+          alt="Foto equipo"
+        />
+        <mat-card-content>
+          <p
+            class="text-center fw-bold text-dark"
+            [ngStyle]="{ 'font-family': 'Roboto' }"
+          >
+            {{ team.nickname }}
+          </p>
+        </mat-card-content>
+        <!--<mat-card-actions>
+            <div class="text-center d-grid">
+              <button (click)="showCharacterInfo(character)" mat-button class="btn btn-primary" [ngStyle]="{'font-family': 'Roboto'}"> + INFO</button>
+            </div>
+          </mat-card-actions>-->
+      </mat-card>
+    </div>
   </div>
 </div>
-
-

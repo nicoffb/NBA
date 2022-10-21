@@ -11,6 +11,7 @@ import { ListaEquiposComponent } from './componentes/lista-equipos/lista-equipos
 import { MaterialImportsModule } from './material-imports/material-imports.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MaterialImportsModule,
     HttpClientModule,
+    FlexLayoutModule,
     FormsModule,
     NgbModule
   ],
