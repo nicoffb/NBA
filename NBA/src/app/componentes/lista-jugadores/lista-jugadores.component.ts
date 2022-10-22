@@ -31,16 +31,10 @@ export class ListaJugadoresComponent implements OnInit {
   return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${id}.png`}
 
   getJugador (jugador : Jugador){
-    let id = jugador.personId;
-    this.listaJugadores.forEach(jugador => {
-      if(jugador.personId == id ){
-        this.jugadorSeleccionado = jugador;
-      }
-      
-    });
+    this.jugadorSeleccionado = jugador;
     this.jugadoresDialog.open(JugadoresDialogComponent,{
       width: '250px',
-        enterAnimationDuration: '3000ms',
+        enterAnimationDuration: '2000ms',
         exitAnimationDuration: '1500ms',
         data:{
           jugadorInfo: this.jugadorSeleccionado
