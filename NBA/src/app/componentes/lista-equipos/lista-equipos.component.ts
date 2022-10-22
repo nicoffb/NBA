@@ -52,12 +52,7 @@ export class ListaEquiposComponent implements OnInit {
 
   showTeamInfo(team: Team){
 
-    let id = team.teamId;
-    this.teamList.forEach(team => {
-      if(id==team.teamId){
-        this.selectedTeam = team;
-      }
-    });
+    this.selectedTeam = team;
 
       this.dialog.open(EquiposDialogComponent, {
         width: '250px',
