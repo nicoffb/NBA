@@ -29,9 +29,23 @@
                         {{jugador.firstName}} {{jugador.lastName}}
                     </p>
                 </mat-card-content>
+                <mat-card-actions>
+                    <div class="text-center d-grid">
+                      <button
+                        (click)="getJugador(jugador)"
+                        mat-button
+                        class="btn btn-primary"
+                        [ngStyle]="{ 'font-family': 'Roboto' }"
+                      >
+                        + INFO
+                      </button>
+                    </div>
+                  </mat-card-actions>
+
             </mat-card>
         </div>
     </div>
+
 </div>
 
 

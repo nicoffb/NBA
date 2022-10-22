@@ -115,3 +115,9 @@ export interface Team {
     seasonStart: string;
     seasonEnd:   string;
 }
+
+
+export interface JugadoresData {
+    jugadorInfo : Jugador;
+    
+}

@@ -11,13 +11,15 @@ import { MaterialImportsModule } from './material-imports/material-imports.modul
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { JugadoresDialogComponent } from './componentes/lista-jugadores/jugadores-dialog/jugadores-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     ListaJugadoresComponent,
-    ListaEquiposComponent
+    ListaEquiposComponent,
+    JugadoresDialogComponent
   ],
   imports: [
     BrowserModule,
