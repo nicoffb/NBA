@@ -18,36 +18,20 @@
         </mat-select>
     </div>
 
-    
-    <div fxLayout="row wrap"  fxLayoutAlign="center center" fxLayoutGap > 
-        <mat-card class="example-card bg-white" *ngFor="let jugador of listaJugadores">
-            <!-- <mat-card-header>
-                <mat-card-subtitle class="text-center fw-bold text-dark">{{jugador.country}}</mat-card-subtitle>
-            </mat-card-header> -->
-            <img mat-card-image [src]="getImagenJugador(jugador.personId)" 
-                alt="foto jugador"
-                onerror="this.src='https://img.olympicchannel.com/images/image/private/f_auto/t_1-1_300/primary/ovfsumgucccbmte6jtor'">
-            <mat-card-content>
-                <p class="text-center fw-bold text-dark" [ngStyle]="{'font-family': 'Roboto'}">
-                    {{jugador.firstName}} {{jugador.lastName}}
-                </p>
-            </mat-card-content>
-        </mat-card>  
+
+    <div fxLayout="row wrap" fxLayoutAlign=" space-around center center" fxLayoutGap="30px grid">
+        <div fxFlex="20%" fxFlex.sm="33%" fxFlex.xs="100%" *ngFor="let jugador of listaJugadores">
+            <mat-card class="example-card bg-white">
+                <img mat-card-image [src]="getImagenJugador(jugador.personId)" alt="foto jugador"
+                    onerror="this.src='https://img.olympicchannel.com/images/image/private/f_auto/t_1-1_300/primary/ovfsumgucccbmte6jtor'">
+                <mat-card-content>
+                    <p class="text-center fw-bold text-dark" [ngStyle]="{'font-family': 'Roboto'}">
+                        {{jugador.firstName}} {{jugador.lastName}}
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
     </div>
 </div>
 
 
-
-
-
-<!-- <div class="row justify-content-center"> -->
-
-
-<!--<mat-card-actions>
-          <div class="text-center d-grid">
-            <button (click)="showCharacterInfo(character)" mat-button class="btn btn-primary" [ngStyle]="{'font-family': 'Roboto'}"> + INFO</button>
-          </div>
-        </mat-card-actions>-->
-<!--  </mat-card>
-    </div>
-  </div> --> -->
