@@ -12,13 +12,15 @@ import { MaterialImportsModule } from './material-imports/material-imports.modul
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { EquiposDialogComponent } from './componentes/lista-equipos/equipos-dialog/equipos-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     ListaJugadoresComponent,
-    ListaEquiposComponent
+    ListaEquiposComponent,
+    EquiposDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -38,3 +38,7 @@ export interface Team {
   divName: string
 }
 
+export interface TeamData{
+  teamInfo: Team
+}
+

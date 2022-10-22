@@ -22,13 +22,26 @@
       class="w-25 bg-success"
       [(ngModel)]="year"
       (selectionChange)="getAllTeams(this.year)"
+    >
+      <mat-option value="" disabled selected class="text-dark"
+        >Select year</mat-option
       >
-      <mat-option value="" disabled selected class="text-dark">Select year</mat-option>
-      <mat-option *ngFor="let year of yearList" [value]="year">{{year}}</mat-option>
+      <mat-option *ngFor="let year of yearList" [value]="year">{{
+        year
+      }}</mat-option>
     </mat-select>
   </div>
-  <div fxLayout="row wrap" fxLayoutAlign="space-around center center" fxLayoutGap="30px grid">
-    <div fxFlex="20%" fxFlex.sm="33%" fxFlex.xs="100%" *ngFor="let team of teamList" >
+  <div
+    fxLayout="row wrap"
+    fxLayoutAlign="space-around center center"
+    fxLayoutGap="30px grid"
+  >
+    <div
+      fxFlex="20%"
+      fxFlex.sm="33%"
+      fxFlex.xs="100%"
+      *ngFor="let team of teamList"
+    >
       <mat-card class="example-card bg-white">
         <img
           mat-card-image
@@ -45,11 +58,18 @@
             {{ team.nickname }}
           </p>
         </mat-card-content>
-        <!--<mat-card-actions>
-            <div class="text-center d-grid">
-              <button (click)="showCharacterInfo(character)" mat-button class="btn btn-primary" [ngStyle]="{'font-family': 'Roboto'}"> + INFO</button>
-            </div>
-          </mat-card-actions>-->
+        <mat-card-actions>
+          <div class="text-center d-grid">
+            <button
+              (click)="showTeamInfo(team)"
+              mat-button
+              class="btn btn-primary"
+              [ngStyle]="{ 'font-family': 'Roboto' }"
+            >
+              + INFO
+            </button>
+          </div>
+        </mat-card-actions>
       </mat-card>
     </div>
   </div>
