@@ -1,1 +1,51 @@
-<p>lista-jugadores works!</p>
+<div class="text-center pt-5">
+    <img src="https://assets.stickpng.com/images/58428defa6515b1e0ad75ab4.png" alt="Logo nba" class="w-25 mb-5">
+</div>
+
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb fst-italic fs-4">
+            <li class="breadcrumb-item fw-bold text-uppercase"><a routerLink="/menu" class="text-decoration-none">M e n
+                    u</a></li>
+            <li class="breadcrumb-item active text-warning" aria-current="page">Jugadores</li>
+        </ol>
+    </nav>
+
+    <div class="text-center">
+        <mat-select class="w-25" [(ngModel)]="year" (selectionChange)="getTodosLosJugadores(this.year)">
+            <mat-option [value]="2021">2021</mat-option>
+            <mat-option [value]="2022">2022</mat-option>
+        </mat-select>
+    </div>
+
+
+    <div fxLayout="row wrap" fxLayoutAlign=" space-around center center" fxLayoutGap="30px grid">
+        <div fxFlex="20%" fxFlex.sm="33%" fxFlex.xs="100%" *ngFor="let jugador of listaJugadores">
+            <mat-card class="example-card bg-white">
+                <img mat-card-image [src]="getImagenJugador(jugador.personId)" alt="foto jugador"
+                    onerror="this.src='https://cdn.nba.com/headshots/nba/latest/1040x760/893.png'">
+                <mat-card-content>
+                    <p class="text-center fw-bold text-dark" [ngStyle]="{'font-family': 'Roboto'}">
+                        {{jugador.firstName}} {{jugador.lastName}}
+                    </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <div class="text-center d-grid">
+                      <button
+                        (click)="getJugador(jugador)"
+                        mat-button
+                        class="btn btn-primary"
+                        [ngStyle]="{ 'font-family': 'Roboto' }"
+                      >
+                        + INFO
+                      </button>
+                    </div>
+                  </mat-card-actions>
+
+            </mat-card>
+        </div>
+    </div>
+
+</div>
+
+
