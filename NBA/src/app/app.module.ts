@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { EquiposDialogComponent } from './componentes/lista-equipos/equipos-dialog/equipos-dialog.component';
+import { JugadoresDialogComponent } from './componentes/lista-jugadores/jugadores-dialog/jugadores-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -21,16 +22,17 @@ import { EquiposDialogComponent } from './componentes/lista-equipos/equipos-dial
     ListaJugadoresComponent,
     ListaEquiposComponent,
     EquiposDialogComponent
+    JugadoresDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
+    NgbModule,
     MaterialImportsModule,
-    HttpClientModule,
-    FlexLayoutModule,
     FormsModule,
-    NgbModule
+    HttpClientModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
