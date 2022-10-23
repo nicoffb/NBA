@@ -19,13 +19,13 @@ export class ListaEquiposComponent implements OnInit {
   playersList: Jugador[]=[];
   selectedPlayers: Jugador[]=[];
   yearList: String[]=["2016","2017","2018","2019", "2020", "2021", "2022"];
-  year: string = "";
+  year: string = "2022";
   pages: number = 0;
 
   constructor(private equiposService: EquiposService, private jugadoresService: ListaJugadoresService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.getAllTeams("2022");
+    this.getAllTeams(this.year);
     this.collectAllPlayers();
   }
 
@@ -80,7 +80,6 @@ export class ListaEquiposComponent implements OnInit {
         playersSelected.push(jugador);
       }
     });
-    alert('hola')
     return playersSelected;
   }
 

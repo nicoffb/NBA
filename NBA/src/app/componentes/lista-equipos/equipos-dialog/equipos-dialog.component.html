@@ -1,5 +1,5 @@
 <h1 mat-dialog-title class="text-center">{{data.teamInfo.nickname}}</h1>
-<div mat-dialog-content class="text-center">
+<div mat-dialog-content class="text-start">
   <ul>
     <li>Nombre completo: {{data.teamInfo.fullName}}</li>
     <li>NBA Franchise: {{data.teamInfo.isNBAFranchise}}</li>
@@ -8,12 +8,15 @@
     <li>Nombre corto: {{data.teamInfo.teamShortName}}</li>
   </ul>
 </div>
-<div>
-  <h3>Jugadores:</h3>
+<div *ngIf="data.playersFromTeam.length; else noPlayers">
+  <h5>Jugadores:</h5>
   <ul *ngFor="let jugador of data.playersFromTeam">
-    <li>{{jugador.firstName} {{jugador.lastName}</li>
+    <li>{{jugador.firstName}} {{jugador.lastName}}</li>
   </ul>
 </div>
+<ng-template #noPlayers >
+  <p class="text-danger">Los sentimos, jugadores no disponibles.</p>
+</ng-template>
 <div mat-dialog-actions class="d-grid text-center" >
   <button mat-button mat-dialog-close color="prymary" cdkFocusInitial>Ok</button>
 </div>
