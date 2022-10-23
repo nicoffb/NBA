@@ -11,7 +11,9 @@ import { MaterialImportsModule } from './material-imports/material-imports.modul
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { EquiposDialogComponent } from './componentes/lista-equipos/equipos-dialog/equipos-dialog.component';
 import { JugadoresDialogComponent } from './componentes/lista-jugadores/jugadores-dialog/jugadores-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -19,12 +21,13 @@ import { JugadoresDialogComponent } from './componentes/lista-jugadores/jugadore
     MenuComponent,
     ListaJugadoresComponent,
     ListaEquiposComponent,
+    EquiposDialogComponent
     JugadoresDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
     NgbModule,
     MaterialImportsModule,
     FormsModule,
