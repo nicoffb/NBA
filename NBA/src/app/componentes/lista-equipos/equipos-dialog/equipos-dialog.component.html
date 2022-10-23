@@ -8,6 +8,12 @@
     <li>Nombre corto: {{data.teamInfo.teamShortName}}</li>
   </ul>
 </div>
+<div>
+  <h3>Jugadores:</h3>
+  <ul *ngFor="let jugador of data.playersFromTeam">
+    <li>{{jugador.firstName} {{jugador.lastName}</li>
+  </ul>
+</div>
 <div mat-dialog-actions class="d-grid text-center" >
   <button mat-button mat-dialog-close color="prymary" cdkFocusInitial>Ok</button>
 </div>

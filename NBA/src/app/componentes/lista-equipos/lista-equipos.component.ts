@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Team } from 'src/app/interfaces/equipos';
+import { Jugador } from 'src/app/interfaces/lista-jugadores';
 import { EquiposService } from 'src/app/servicios/equipos.service';
+import { ListaJugadoresService } from 'src/app/servicios/lista-jugadores.service';
 import { EquiposDialogComponent } from './equipos-dialog/equipos-dialog.component';
 
 const URL_IMAGEN = "https://cdn.nba.com/logos/nba"
@@ -14,14 +16,17 @@ export class ListaEquiposComponent implements OnInit {
 
   selectedTeam: Team | undefined;
   teamList: Team[]=[];
+  playersList: Jugador[]=[];
+  selectedPlayers: Jugador[]=[];
   yearList: String[]=["2016","2017","2018","2019", "2020", "2021", "2022"];
   year: string = "";
   pages: number = 0;
 
-  constructor(private equiposService: EquiposService, private dialog: MatDialog) { }
+  constructor(private equiposService: EquiposService, private jugadoresService: ListaJugadoresService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.getAllTeams("2022")
+    this.getAllTeams("2022");
+    this.collectAllPlayers();
   }
 
   getAllTeams(year: String){
@@ -35,33 +40,49 @@ export class ListaEquiposComponent implements OnInit {
     return `${URL_IMAGEN}/${id}/global/L/logo.svg`;
   }
 
-  /*showTeamInfo(team: Team, year: String){
-    this.equiposService.getTeam(team, year).subscribe(resp=>{
-      this.selectedTeam = resp;
-
-      this.dialog.open(EquiposDialogComponent, {
-        width: '250px',
-        enterAnimationDuration: '3000ms',
-        exitAnimationDuration: '1500ms',
-        data:{
-          teamInfo: this.selectedTeam
-        }
-      })
-    });
-  }*/
-
   showTeamInfo(team: Team){
 
+    let id = team.teamId;
     this.selectedTeam = team;
+    this.selectedPlayers = this.playersFromTeam(id);
 
       this.dialog.open(EquiposDialogComponent, {
         width: '250px',
         enterAnimationDuration: '3000ms',
         exitAnimationDuration: '1500ms',
         data:{
-          teamInfo: this.selectedTeam
+          teamInfo: this.selectedTeam,
+          playersFromTeam: this.selectedPlayers
         }
       })
   }
+
+  collectAllPlayers(){
+
+    this.jugadoresService.getJugadores(this.year).subscribe(resp => {
+      this.playersList = [...resp.league.standard,...resp.league.africa,...resp.league.sacramento, ...resp.league.vegas, ...resp.league.utah];
+    })
+
+    /*let id: string = team.teamId;
+    this.jugadoresService.getJugadores(this.year).subscribe(resp => {
+
+      this.listaJugadoresSeleccionados = this.playersFromTeam(id, [...resp.league.standard,...resp.league.africa,...resp.league.sacramento, ...resp.league.vegas, ...resp.league.utah]);
+    });*/
+  }
+
+  playersFromTeam(id: string): Jugador[]{
+
+    let playersSelected: Jugador[]=[];
+
+    this.playersList.forEach(jugador => {
+
+      if(id == jugador.teamId){
+        playersSelected.push(jugador);
+      }
+    });
+    alert('hola')
+    return playersSelected;
+  }
+
 
 }

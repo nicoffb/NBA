@@ -21,13 +21,13 @@ import { JugadoresDialogComponent } from './componentes/lista-jugadores/jugadore
     MenuComponent,
     ListaJugadoresComponent,
     ListaEquiposComponent,
-    EquiposDialogComponent
+    EquiposDialogComponent,
     JugadoresDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
     NgbModule,
     MaterialImportsModule,
     FormsModule,
