@@ -1,3 +1,5 @@
+import { Jugador } from "./lista-jugadores"
+
 export interface Equipos {
   _internal: Internal
   league: League
@@ -40,5 +42,6 @@ export interface Team {
 
 export interface TeamData{
   teamInfo: Team
+  playersFromTeam: Jugador[];
 }
 
