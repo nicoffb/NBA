@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { ListaJugadores } from '../interfaces/lista-jugadores';
 
 const API_BASE_URL = 'https://data.nba.net/data/';
-/*10s/prod/v1/2022/players.json */
 
 @Injectable({
   providedIn: 'root'
