@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { EquiposDialogComponent } from './componentes/lista-equipos/equipos-dialog/equipos-dialog.component';
 import { JugadoresDialogComponent } from './componentes/lista-jugadores/jugadores-dialog/jugadores-dialog.component';
+import { PlayerstatsComponent } from './componentes/playerstats/playerstats.component';
+
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { JugadoresDialogComponent } from './componentes/lista-jugadores/jugadore
     ListaJugadoresComponent,
     ListaEquiposComponent,
     EquiposDialogComponent,
-    JugadoresDialogComponent
+    JugadoresDialogComponent,
+    PlayerstatsComponent,
   ],
   imports: [
     BrowserModule,
