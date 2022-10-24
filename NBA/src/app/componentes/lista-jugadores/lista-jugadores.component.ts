@@ -45,7 +45,7 @@ export class ListaJugadoresComponent implements OnInit {
 
   getJugador (jugador : Jugador){
     this.jugadorSeleccionado = jugador;
-    
+
     this.jugadoresDialog.open(JugadoresDialogComponent,{
       width: '250px',
         enterAnimationDuration: '2000ms',
@@ -53,7 +53,7 @@ export class ListaJugadoresComponent implements OnInit {
         data:{
           jugadorInfo: this.jugadorSeleccionado
         }
-    })
+    });
   }
 
 }

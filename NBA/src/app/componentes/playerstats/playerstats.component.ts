@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CareerSummary, Stats } from 'src/app/interfaces/estadisticas';
 import { Jugador } from 'src/app/interfaces/lista-jugadores';
 import { EstadisticasService } from 'src/app/servicios/estadisticas.service';
 import { ListaJugadoresService } from 'src/app/servicios/lista-jugadores.service';
@@ -14,7 +13,6 @@ export class PlayerstatsComponent implements OnInit {
   listaJugadores: Jugador[] = [];
   year: String = "2022";      //inicializar vacio
   listaAnios: String[] = ["2016", "2017", "2018", "2019", "2020", "2021", "2022"];
-  estadisticasJugador : Stats | undefined;
 
   constructor(private estadisticasService: EstadisticasService, private listaJugadoresServicio: ListaJugadoresService) { }
 
@@ -44,10 +42,11 @@ export class PlayerstatsComponent implements OnInit {
     return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${id}.png`
   }
 
-  getEstadisticasJugador(year: String, id: String){
-      this.estadisticasService.getStats(year , id).subscribe(resp=>{
-        this.estadisticasJugador = resp.league.standard.stats;
-      });
+  getEstadisticasUnJugador(id: string){
+
+    this.estadisticasService.getStats(this.year, id).subscribe(resp => {
+
+    });
   }
 
 }
