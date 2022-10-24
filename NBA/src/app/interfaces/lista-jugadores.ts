@@ -19,7 +19,7 @@ export interface Internal {
 
 export interface League {
     standard:   Jugador[];
-    africa:     any[];
+    africa:     Jugador[];
     sacramento: Jugador[];
     vegas:      Jugador[];
     utah:       Jugador[];
