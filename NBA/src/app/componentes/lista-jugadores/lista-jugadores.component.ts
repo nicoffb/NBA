@@ -12,18 +12,31 @@ import { MatDialog } from '@angular/material/dialog';
 export class ListaJugadoresComponent implements OnInit {
 
   listaJugadores: Jugador[] = [];
-  year: String="";
+  year: String="2022";
   jugadorSeleccionado: Jugador|undefined;          //inicializar vacio
+  listaAnios : String[] = ["2016","2017","2018","2019","2020","2021","2022"];
 
   constructor(private listaJugadoresServicio : ListaJugadoresService, private jugadoresDialog : MatDialog  ) { }
 
   ngOnInit(): void {
-    this.getTodosLosJugadores("2022");
+    this.getTodosLosJugadores(this.year);
   }
 
   getTodosLosJugadores(year: String){
     this.listaJugadoresServicio.getJugadores(year).subscribe(respuesta => {
-      this.listaJugadores= [...respuesta.league.standard,...respuesta.league.africa,...respuesta.league.sacramento, ...respuesta.league.vegas, ...respuesta.league.utah];
+      this.listaJugadores= [...respuesta.league.standard];
+      if(respuesta.league.africa) {
+        this.listaJugadores = [...this.listaJugadores,...respuesta.league.africa];
+      }
+      if(respuesta.league.sacramento) {
+      this.listaJugadores = [...this.listaJugadores, ...respuesta.league.sacramento];
+      }
+      if(respuesta.league.vegas) {
+      this.listaJugadores = [...this.listaJugadores, ...respuesta.league.vegas];
+      }
+      if(respuesta.league.utah) {
+      this.listaJugadores = [...this.listaJugadores, ...respuesta.league.utah];
+      }
     });
   }
 
