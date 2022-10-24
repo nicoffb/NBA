@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Stats } from 'src/app/interfaces/estadisticas';
 import { Jugador } from 'src/app/interfaces/lista-jugadores';
 import { EstadisticasService } from 'src/app/servicios/estadisticas.service';
 import { ListaJugadoresService } from 'src/app/servicios/lista-jugadores.service';
@@ -13,6 +14,8 @@ export class PlayerstatsComponent implements OnInit {
   listaJugadores: Jugador[] = [];
   year: String = "2022";      //inicializar vacio
   listaAnios: String[] = ["2016", "2017", "2018", "2019", "2020", "2021", "2022"];
+  estadisticaJugador= new Map<string, Stats>();
+
 
   constructor(private estadisticasService: EstadisticasService, private listaJugadoresServicio: ListaJugadoresService) { }
 
@@ -35,6 +38,7 @@ export class PlayerstatsComponent implements OnInit {
       if (respuesta.league.utah) {
         this.listaJugadores = [...this.listaJugadores, ...respuesta.league.utah];
       }
+      this.getEstadisticasJugadores();
     });
   }
 
@@ -42,11 +46,16 @@ export class PlayerstatsComponent implements OnInit {
     return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${id}.png`
   }
 
-  getEstadisticasUnJugador(id: string){
+  getEstadisticasJugadores(){
 
-    this.estadisticasService.getStats(this.year, id).subscribe(resp => {
+      this.listaJugadores.forEach(jugador => {
+        this.estadisticasService.getStats(this.year, jugador.personId).subscribe(resp=>{
 
-    });
+          debugger
+          this.estadisticaJugador.set(jugador.teamId, resp.league.standard.stats);
+        });
+      });
+
   }
 
 }
