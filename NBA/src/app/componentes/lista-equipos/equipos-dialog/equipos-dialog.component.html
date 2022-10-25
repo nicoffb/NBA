@@ -1,24 +1,41 @@
-<div class="envoltorio">
-  <h1 mat-dialog-title class="text-center">{{data.teamInfo.nickname}}</h1>
-  <div mat-dialog-content class="text-start">
-    <ul>
-      <li>Nombre completo: {{data.teamInfo.fullName}}</li>
-      <li>NBA Franchise: {{data.teamInfo.isNBAFranchise}}</li>
-      <li>All Star: {{data.teamInfo.isAllStar}}</li>
-      <li>Ciudad: {{data.teamInfo.city}}</li>
-      <li>Nombre corto: {{data.teamInfo.teamShortName}}</li>
-    </ul>
+<div class="envoltorio row">
+  <div class="col-6 row transparente ms-1">
+    <div class="col-12 text-center my-3">
+      <img [src]="getPhotoUrl(data.teamInfo)" alt="Foto equipo" width="25%"/>
+      <div mat-dialog-content class="text-start text-dark fw-bold text-center">
+          <P>Nombre completo: {{ data.teamInfo.fullName }}</P>
+          <P>NBA Franchise: {{ data.teamInfo.isNBAFranchise }}</P>
+          <P>All Star: {{ data.teamInfo.isAllStar }}</P>
+          <P>Ciudad: {{ data.teamInfo.city }}</P>
+          <P>Nombre corto: {{ data.teamInfo.teamShortName }}</P>
+      </div>
+    </div>
   </div>
-  <div *ngIf="data.playersFromTeam.length; else noPlayers">
-    <h5>Jugadores:</h5>
-    <ul *ngFor="let jugador of data.playersFromTeam">
-      <li>{{jugador.firstName}} {{jugador.lastName}}</li>
-    </ul>
+  <div *ngIf="data.playersFromTeam.length; else noPlayers" class="col-6 ms-2">
+    <table mat-table [dataSource]="data.playersFromTeam" class="w-100 transparente2" >
+      <ng-container matColumnDef="img">
+        <th mat-header-cell *matHeaderCellDef class="ps-4 text-dark fw-bold fs-5">Jugador</th>
+        <td mat-cell *matCellDef="let element">
+          <img [src]="getPlayerPhotoUrl(element.personId)"
+          onerror="this.src='https://cdn.nba.com/headshots/nba/latest/1040x760/893.png'" alt="Foto jugador" width="50%">
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="fullName">
+        <th mat-header-cell *matHeaderCellDef class="text-dark fw-bold fs-5">Nombre</th>
+        <td mat-cell *matCellDef="let element" class="text-dark fw-bold">{{element.firstName}} {{element.lastName}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columndefs"></tr>
+          <tr mat-row *matRowDef="let row; columns: columndefs;"></tr>
+    </table>
   </div>
-  <ng-template #noPlayers >
-    <p class="text-danger">Los sentimos, jugadores no disponibles.</p>
-  </ng-template>
-  <div mat-dialog-actions class="d-grid text-center" >
-    <button mat-button mat-dialog-close color="prymary" cdkFocusInitial>Ok</button>
+    <ng-template #noPlayers>
+      <div class="text-center transparente col-6">
+        <p class="text-danger m-5">Los sentimos, jugadores no disponibles.</p>
+      </div>
+    </ng-template>
+  <div mat-dialog-actions class="d-grid text-center justify-content-center fw-bold">
+    <button mat-button mat-dialog-close cdkFocusInitial class="bg-success w-25">
+      Ok
+    </button>
   </div>
 </div>

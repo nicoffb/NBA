@@ -1,12 +1,18 @@
-<h1 mat-dialog-title class="text-center">{{data.jugadorInfo.firstName}} {{data.jugadorInfo.lastName}} </h1>
-<div mat-dialog-content class="text-start">
-  <ul>
-    <li>Ciudad natal: {{data.jugadorInfo.country}}</li>
-    <li>Año de debut: {{data.jugadorInfo.nbaDebutYear}}</li>
-    <li>Estatura: {{data.jugadorInfo.heightMeters}}</li>
-    <li>Peso: {{data.jugadorInfo.weightKilograms}}</li>
-  </ul>
-</div>
-<div mat-dialog-actions class="d-grid text-center" >
-  <button mat-button mat-dialog-close color="prymary" cdkFocusInitial>Ok</button>
+<div class="envoltorio transparente py-3">
+  <h1 mat-dialog-title class="text-center text-dark fw-bold">
+    {{ data.jugadorInfo.firstName }} {{ data.jugadorInfo.lastName }}
+  </h1>
+  <div mat-dialog-content class="text-start text-dark fw-bold pt-3">
+    <ul>
+      <li>Ciudad natal: {{ data.jugadorInfo.country }}</li>
+      <li>Año de debut: {{ data.jugadorInfo.nbaDebutYear }}</li>
+      <li>Estatura: {{ data.jugadorInfo.heightMeters }}</li>
+      <li>Peso: {{ data.jugadorInfo.weightKilograms }}</li>
+    </ul>
+  </div>
+  <div mat-dialog-actions class="d-grid text-center justify-content-center">
+    <button mat-button mat-dialog-close class="bg-success w-25" cdkFocusInitial>
+      Ok
+    </button>
+  </div>
 </div>

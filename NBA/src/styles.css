@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body { height: 100%;
+  background-image: url(https://vivabasquet.com/wp-content/uploads/2014/12/33796733_m.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-dialog-container{
   background-image: url(https://images5.alphacoders.com/467/467394.jpg);

@@ -5,6 +5,7 @@ import { JugadoresDialogComponent } from './jugadores-dialog/jugadores-dialog.co
 import { MatDialog } from '@angular/material/dialog';
 import { EstadisticasService } from 'src/app/servicios/estadisticas.service';
 import { CareerSummary } from 'src/app/interfaces/estadisticas';
+import { PlayerstatsComponent } from '../playerstats/playerstats.component';
 
 @Component({
   selector: 'app-lista-jugadores',
@@ -19,7 +20,7 @@ export class ListaJugadoresComponent implements OnInit {
   listaAnios : String[] = ["2016","2017","2018","2019","2020","2021","2022"];
   estadisticaJugador: CareerSummary | undefined;
 
-  constructor(private listaJugadoresServicio : ListaJugadoresService, private jugadoresDialog : MatDialog, private estadisticasService: EstadisticasService, ) { }
+  constructor(private listaJugadoresServicio : ListaJugadoresService, private jugadoresDialog : MatDialog, private estadisticasService: EstadisticasService) { }
 
   ngOnInit(): void {
     this.getTodosLosJugadores(this.year);
@@ -46,7 +47,7 @@ export class ListaJugadoresComponent implements OnInit {
   getImagenJugador (id : String){
   return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${id}.png`}
 
-  getJugador (jugador : Jugador){
+  getJugador(jugador : Jugador){
 
     this.jugadorSeleccionado = jugador;
 
@@ -60,11 +61,29 @@ export class ListaJugadoresComponent implements OnInit {
     });
   }
 
-  getEstadisticasJugadores(jugador: Jugador){
+  getEstadisticasJugador(jugador: Jugador){
 
     this.estadisticasService.getStats(this.year, jugador.personId).subscribe(resp =>{
       this.estadisticaJugador = resp.league.standard.stats.careerSummary;
     });
+  }
+
+  getEstadistica(jugador: Jugador){
+
+    this.getEstadisticasJugador(jugador);
+
+    this.jugadoresDialog.open(PlayerstatsComponent, {
+
+      width: '75%',
+      enterAnimationDuration: '1000ms',
+        exitAnimationDuration: '500ms',
+        data:{
+          estadisticaInfo: this.estadisticaJugador,
+          jugadorInfo: jugador
+        }
+
+    });
+
   }
 
 
