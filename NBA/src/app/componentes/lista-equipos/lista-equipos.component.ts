@@ -47,7 +47,9 @@ export class ListaEquiposComponent implements OnInit {
     this.selectedPlayers = this.playersFromTeam(id);
 
       this.dialog.open(EquiposDialogComponent, {
-        width: '250px',
+        width: '75%',
+        height: '50%',
+        panelClass: 'modal',
         enterAnimationDuration: '3000ms',
         exitAnimationDuration: '1500ms',
         data:{

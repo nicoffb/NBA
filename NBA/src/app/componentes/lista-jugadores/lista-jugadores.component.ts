@@ -3,6 +3,8 @@ import { ListaJugadoresService } from 'src/app/servicios/lista-jugadores.service
 import { Jugador } from 'src/app/interfaces/lista-jugadores';
 import { JugadoresDialogComponent } from './jugadores-dialog/jugadores-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { EstadisticasService } from 'src/app/servicios/estadisticas.service';
+import { CareerSummary } from 'src/app/interfaces/estadisticas';
 
 @Component({
   selector: 'app-lista-jugadores',
@@ -15,8 +17,9 @@ export class ListaJugadoresComponent implements OnInit {
   year: String="2022";
   jugadorSeleccionado: Jugador|undefined;          //inicializar vacio
   listaAnios : String[] = ["2016","2017","2018","2019","2020","2021","2022"];
+  estadisticaJugador: CareerSummary | undefined;
 
-  constructor(private listaJugadoresServicio : ListaJugadoresService, private jugadoresDialog : MatDialog  ) { }
+  constructor(private listaJugadoresServicio : ListaJugadoresService, private jugadoresDialog : MatDialog, private estadisticasService: EstadisticasService, ) { }
 
   ngOnInit(): void {
     this.getTodosLosJugadores(this.year);
@@ -44,10 +47,11 @@ export class ListaJugadoresComponent implements OnInit {
   return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${id}.png`}
 
   getJugador (jugador : Jugador){
+
     this.jugadorSeleccionado = jugador;
 
     this.jugadoresDialog.open(JugadoresDialogComponent,{
-      width: '250px',
+      width: '25%',
         enterAnimationDuration: '2000ms',
         exitAnimationDuration: '1500ms',
         data:{
@@ -55,5 +59,13 @@ export class ListaJugadoresComponent implements OnInit {
         }
     });
   }
+
+  getEstadisticasJugadores(jugador: Jugador){
+
+    this.estadisticasService.getStats(this.year, jugador.personId).subscribe(resp =>{
+      this.estadisticaJugador = resp.league.standard.stats.careerSummary;
+    });
+  }
+
 
 }

@@ -2,3 +2,8 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-dialog-container{
+  background-image: url(https://images5.alphacoders.com/467/467394.jpg);
+  background-size: cover;
+  background-position: center;
+}
