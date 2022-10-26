@@ -1,5 +1,4 @@
-<div fxLayout="row wrap" fxLayoutAlign=" space-around center center" fxLayoutGap="30px grid">
-    <div fxFlex="20%" fxFlex.sm="33%" fxFlex.xs="100%" > 
+
 <mat-card class="example-card bg-white">
     <img mat-card-image [src]="getImagenJugador(jugador.personId)" alt="foto jugador"
         onerror="this.src='https://cdn.nba.com/headshots/nba/latest/1040x760/893.png'">
@@ -14,12 +13,10 @@
                 [ngStyle]="{ 'font-family': 'Roboto' }">
                 +INFO
             </button>
-            <button (click)="getEstadistica(jugador)" mat-button class="btn btn-primary text-dark"
+            <button (click)="getEstadistica(jugador)" mat-button class="btn btn-warning text-dark"
                 [ngStyle]="{ 'font-family': 'Roboto' }">
                 STATS
             </button>
         </div>
     </mat-card-actions>
 </mat-card>
-</div>
-</div>
