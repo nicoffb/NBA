@@ -44,47 +44,7 @@ export class ListaJugadoresComponent implements OnInit {
     });
   }
 
-  getImagenJugador (id : String){
-  return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${id}.png`}
 
-  getJugador(jugador : Jugador){
-
-    this.jugadorSeleccionado = jugador;
-
-    this.jugadoresDialog.open(JugadoresDialogComponent,{
-      width: '25%',
-        enterAnimationDuration: '2000ms',
-        exitAnimationDuration: '1500ms',
-        data:{
-          jugadorInfo: this.jugadorSeleccionado
-        }
-    });
-  }
-
-  getEstadisticasJugador(jugador: Jugador){
-
-    this.estadisticasService.getStats(this.year, jugador.personId).subscribe(resp =>{
-      this.estadisticaJugador = resp.league.standard.stats.careerSummary;
-    });
-  }
-
-  getEstadistica(jugador: Jugador){
-
-    this.getEstadisticasJugador(jugador);
-
-    this.jugadoresDialog.open(PlayerstatsComponent, {
-
-      width: '75%',
-      enterAnimationDuration: '1000ms',
-        exitAnimationDuration: '500ms',
-        data:{
-          estadisticaInfo: this.estadisticaJugador,
-          jugadorInfo: jugador
-        }
-
-    });
-
-  }
 
 
 }
