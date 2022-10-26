@@ -28,3 +28,4 @@ Funcionalidad listado de equipos con filtro de fechas
 Funcionalidad mostrar detalles de los equipos con los jugadores de este
 ![image](https://user-images.githubusercontent.com/93126337/198025408-8765e428-603c-4c82-933c-1b27610dabda.png)
 
+Hemos intentado añadir una última funcionalidad para mostrar las estadísticas de los jugadores, pero empezamos intentando hacer un listado directo y al final acabamos poniendo un nuevo botón individual en cada jugador que no terminamos de conseguir.
