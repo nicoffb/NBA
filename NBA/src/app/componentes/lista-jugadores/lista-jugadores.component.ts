@@ -3,6 +3,9 @@ import { ListaJugadoresService } from 'src/app/servicios/lista-jugadores.service
 import { Jugador } from 'src/app/interfaces/lista-jugadores';
 import { JugadoresDialogComponent } from './jugadores-dialog/jugadores-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { EstadisticasService } from 'src/app/servicios/estadisticas.service';
+import { CareerSummary } from 'src/app/interfaces/estadisticas';
+import { PlayerstatsComponent } from '../playerstats/playerstats.component';
 
 @Component({
   selector: 'app-lista-jugadores',
@@ -15,8 +18,9 @@ export class ListaJugadoresComponent implements OnInit {
   year: String="2022";
   jugadorSeleccionado: Jugador|undefined;          //inicializar vacio
   listaAnios : String[] = ["2016","2017","2018","2019","2020","2021","2022"];
+  estadisticaJugador: CareerSummary | undefined;
 
-  constructor(private listaJugadoresServicio : ListaJugadoresService, private jugadoresDialog : MatDialog  ) { }
+  constructor(private listaJugadoresServicio : ListaJugadoresService, private jugadoresDialog : MatDialog, private estadisticasService: EstadisticasService) { }
 
   ngOnInit(): void {
     this.getTodosLosJugadores(this.year);
@@ -43,17 +47,44 @@ export class ListaJugadoresComponent implements OnInit {
   getImagenJugador (id : String){
   return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${id}.png`}
 
-  getJugador (jugador : Jugador){
+  getJugador(jugador : Jugador){
+
     this.jugadorSeleccionado = jugador;
-    
+
     this.jugadoresDialog.open(JugadoresDialogComponent,{
-      width: '250px',
+      width: '25%',
         enterAnimationDuration: '2000ms',
         exitAnimationDuration: '1500ms',
         data:{
           jugadorInfo: this.jugadorSeleccionado
         }
-    })
+    });
   }
+
+  getEstadisticasJugador(jugador: Jugador){
+
+    this.estadisticasService.getStats(this.year, jugador.personId).subscribe(resp =>{
+      this.estadisticaJugador = resp.league.standard.stats.careerSummary;
+    });
+  }
+
+  getEstadistica(jugador: Jugador){
+
+    this.getEstadisticasJugador(jugador);
+
+    this.jugadoresDialog.open(PlayerstatsComponent, {
+
+      width: '75%',
+      enterAnimationDuration: '1000ms',
+        exitAnimationDuration: '500ms',
+        data:{
+          estadisticaInfo: this.estadisticaJugador,
+          jugadorInfo: jugador
+        }
+
+    });
+
+  }
+
 
 }

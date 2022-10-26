@@ -47,27 +47,35 @@ export class ListaEquiposComponent implements OnInit {
     this.selectedPlayers = this.playersFromTeam(id);
 
       this.dialog.open(EquiposDialogComponent, {
-        width: '250px',
+        width: '50%',
+        height: '50%',
+        panelClass: 'modal',
         enterAnimationDuration: '3000ms',
         exitAnimationDuration: '1500ms',
         data:{
           teamInfo: this.selectedTeam,
           playersFromTeam: this.selectedPlayers
         }
-      })
+      });
   }
 
   collectAllPlayers(){
 
-    this.jugadoresService.getJugadores(this.year).subscribe(resp => {
-      this.playersList = [...resp.league.standard,...resp.league.africa,...resp.league.sacramento, ...resp.league.vegas, ...resp.league.utah];
-    })
-
-    /*let id: string = team.teamId;
-    this.jugadoresService.getJugadores(this.year).subscribe(resp => {
-
-      this.listaJugadoresSeleccionados = this.playersFromTeam(id, [...resp.league.standard,...resp.league.africa,...resp.league.sacramento, ...resp.league.vegas, ...resp.league.utah]);
-    });*/
+    this.jugadoresService.getJugadores(this.year).subscribe(respuesta => {
+      this.playersList= [...respuesta.league.standard];
+      if(respuesta.league.africa) {
+        this.playersList = [...this.playersList,...respuesta.league.africa];
+      }
+      if(respuesta.league.sacramento) {
+      this.playersList = [...this.playersList, ...respuesta.league.sacramento];
+      }
+      if(respuesta.league.vegas) {
+      this.playersList = [...this.playersList, ...respuesta.league.vegas];
+      }
+      if(respuesta.league.utah) {
+      this.playersList = [...this.playersList, ...respuesta.league.utah];
+      }
+    });
   }
 
   playersFromTeam(id: string): Jugador[]{

@@ -41,7 +41,7 @@ export interface Team {
 }
 
 export interface TeamData{
-  teamInfo: Team
+  teamInfo: Team;
   playersFromTeam: Jugador[];
 }
 

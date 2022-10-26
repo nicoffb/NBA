@@ -1,0 +1,41 @@
+<div class="col-6 ms-2">
+  <table mat-table class="w-100 transparente2" >
+    <ng-container matColumnDef="img">
+      <th mat-header-cell *matHeaderCellDef class="ps-4 text-dark fw-bold fs-5">Jugador</th>
+      <td mat-cell>
+        <img [src]="getPlayerPhotoUrl(data.jugadorInfo.personId)"
+        onerror="this.src='https://cdn.nba.com/headshots/nba/latest/1040x760/893.png'" alt="Foto jugador" width="20%">
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="fullName">
+      <th mat-header-cell *matHeaderCellDef class="text-dark fw-bold fs-5">Nombre</th>
+      <td mat-cell class="text-dark fw-bold">{{data.jugadorInfo.firstName}} {{data.jugadorInfo.lastName}}</td>
+  </ng-container>
+  <ng-container matColumnDef="partidosJugados">
+    <th mat-header-cell *matHeaderCellDef class="text-dark fw-bold fs-5">Partidos jugados<th>
+    <td mat-cell class="text-dark fw-bold">{{data.estadisticasInfo.gamesPlayed}} </td>
+  </ng-container>
+  <ng-container matColumnDef="puntosTotales">
+    <th mat-header-cell *matHeaderCellDef class="text-dark fw-bold fs-5">Puntos totales</th>
+    <td mat-cell class="text-dark fw-bold">{{data.estadisticasInfo.points}} </td>
+</ng-container>
+<ng-container matColumnDef="puntosPorPartido">
+  <th mat-header-cell *matHeaderCellDef class="text-dark fw-bold fs-5">PPG</th>
+  <td mat-cell class="text-dark fw-bold">{{data.estadisticasInfo.ppg}} </td>
+</ng-container>
+<ng-container matColumnDef="rebotesPorPartido">
+  <th mat-header-cell *matHeaderCellDef class="text-dark fw-bold fs-5">RPG</th>
+  <td mat-cell class="text-dark fw-bold">{{data.estadisticasInfo.rpg}} </td>
+</ng-container>
+<ng-container matColumnDef="asistenciasPorPartido">
+  <th mat-header-cell *matHeaderCellDef class="text-dark fw-bold fs-5">APG</th>
+  <td mat-cell class="text-dark fw-bold">{{data.estadisticasInfo.apg}} </td>
+</ng-container>
+<ng-container matColumnDef="taponesPorPartido">
+  <th mat-header-cell *matHeaderCellDef class="text-dark fw-bold fs-5">BPG</th>
+  <td mat-cell class="text-dark fw-bold">{{data.estadisticasInfo.bpg}} </td>
+</ng-container>
+  <tr mat-header-row *matHeaderRowDef="columndefs"></tr>
+        <tr mat-row *matRowDef="let row; columns: columndefs;"></tr>
+  </table>
+</div>
