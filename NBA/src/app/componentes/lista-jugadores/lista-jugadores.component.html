@@ -12,7 +12,7 @@
     </nav>
 
     <div class="text-center my-5">
-        <mat-select class="w-25 bg-success" [(ngModel)]="year" (selectionChange)="getTodosLosJugadores(this.year)">
+        <mat-select class="w-25 bg-success" [(value)]="year" (selectionChange)="getTodosLosJugadores(this.year)">
             <mat-option disabled selected class="text-dark">Selecciona un año</mat-option>
             <mat-option [value]=year *ngFor="let year of listaAnios"> {{year}}</mat-option>
         </mat-select>

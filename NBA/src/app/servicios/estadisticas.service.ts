@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { EstadisticasJugadores } from '../interfaces/estadisticas';
 
 
-const API_BASE_URL = 'https://data.nba.net/data/';
+const API_BASE_URL = 'http://data.nba.net/data/';
 
 @Injectable({
   providedIn: 'root'

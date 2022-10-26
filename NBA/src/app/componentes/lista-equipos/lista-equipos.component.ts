@@ -29,7 +29,7 @@ export class ListaEquiposComponent implements OnInit {
     this.collectAllPlayers();
   }
 
-  getAllTeams(year: String){
+  getAllTeams(year: string){
     this.equiposService.getTeamPage(year).subscribe(resp =>{
       this.teamList = [...resp.league.standard];
       this.pages = this.teamList.length / 10
