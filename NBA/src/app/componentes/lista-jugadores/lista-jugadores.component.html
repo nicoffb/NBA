@@ -19,6 +19,6 @@
     </div>
 
     <div fxLayout="row wrap" fxLayoutAlign=" space-around center center" fxLayoutGap="50px grid">
-        <app-jugador *ngFor="let j of listaJugadores" [jugador]="j"></app-jugador>
+        <app-jugador fxFlex="20%" fxFlex.sm="33%" fxFlex.xs="100%" *ngFor="let j of listaJugadores" [jugador]="j"></app-jugador>
     </div>
 </div>
