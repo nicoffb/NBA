@@ -14,6 +14,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { EquiposDialogComponent } from './componentes/lista-equipos/equipos-dialog/equipos-dialog.component';
 import { JugadoresDialogComponent } from './componentes/lista-jugadores/jugadores-dialog/jugadores-dialog.component';
 import { PlayerstatsComponent } from './componentes/playerstats/playerstats.component';
+import { JugadorComponent } from './componentes/jugador/jugador.component';
 
 
 
@@ -26,6 +27,7 @@ import { PlayerstatsComponent } from './componentes/playerstats/playerstats.comp
     EquiposDialogComponent,
     JugadoresDialogComponent,
     PlayerstatsComponent,
+    JugadorComponent,
   ],
   imports: [
     BrowserModule,

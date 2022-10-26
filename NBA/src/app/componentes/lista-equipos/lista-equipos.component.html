@@ -21,7 +21,7 @@
     <mat-select
       class="w-25 bg-success"
       [(ngModel)]="year"
-      (selectionChange)="getAllTeams(this.year)"
+      (selectionChange)="getAllTeams(year)"
     >
       <mat-option value="" disabled selected class="text-dark"
         >Select year</mat-option

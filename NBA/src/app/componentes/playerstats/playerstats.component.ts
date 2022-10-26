@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { EstadisticaData } from 'src/app/interfaces/estadisticas';
+import { CareerSummary, EstadisticaData } from 'src/app/interfaces/estadisticas';
 
 
 
@@ -11,12 +11,17 @@ import { EstadisticaData } from 'src/app/interfaces/estadisticas';
 })
 export class PlayerstatsComponent implements OnInit {
 
+  finalData: CareerSummary = {} as CareerSummary;
+
   columndefs: string [] = ['img', 'fullName', 'partidosJugados', 'puntosTotales',
    'puntosPorPartido', 'rebotesPorPartido', 'asistenciasPorPartido', 'taponesPorPartido'];
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: EstadisticaData) { }
 
   ngOnInit(): void {
+    /*if(this.data.estadisticasInfo != undefined){
+      this.finalData = this.data.estadisticasInfo;
+    }*/
   }
 
   getPlayerPhotoUrl (id : String){
